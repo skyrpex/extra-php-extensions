@@ -36,7 +36,7 @@ functions:
 
 ### Extra configuration files
 
-You may add extra configuration files for PHP in the ``php/conf.d/`` directory.
+You may add extra configuration files for PHP in the `php/conf.d/` directory.
 
 ```ini
 ;php/conf.d/php.ini
@@ -45,32 +45,32 @@ memory_limit=128M
 
 ### Available layers
 
-| Name               | Serverless config (php 7.4)           |
-|:-------------------|:--------------------------------------|
-| AMQP               | `${bref:extra.amqp-php-74}`           |
-| Blackfire          | `${bref:extra.blackfire-php-74}`      |
-| Cassandra          | `${bref:extra.cassandra-php-74}`      |
-| DS                 | `${bref:extra.ds-php-74}`             |
-| GD                 | `${bref:extra.gd-php-74}`             |
-| GMP                | `${bref:extra.gmp-php-74}`            |
-| gRPC               | `${bref:extra.grpc-php-74}`           |
-| Igbinary           | `${bref:extra.igbinary-php-74}`       |
-| Imagick            | `${bref:extra.imagick-php-74}`        |
-| LDAP               | `${bref:extra.ldap-php-74}`           |
-| Mailparse          | `${bref:extra.mailparse-php-74}`      |
-| Memcache           | `${bref:extra.memcache-php-74}`      |
-| Memcached          | `${bref:extra.memcached-php-74}`      |
-| MongoDB            | `${bref:extra.mongodb-php-74}`        |
-| MsgPack            | `${bref:extra.msgpack-php-74}`        |
-| ODBC Snowflake     | `${bref:extra.odbc-snowflake-php-74}` |
-| Pcov               | `${bref:extra.pcov-php-74}`           |
-| PostgreSQL         | `${bref:extra.pgsql-php-74}`          |
-| Redis              | `${bref:extra.redis-php-74}`          |
-| Scrypt             | `${bref:extra.scrypt-php-74}`         |
-| Microsoft SQLSRV   | `${bref:extra.sqlsrv-php-74}`         |
-| UUID               | `${bref:extra.uuid-php-74}`           |
-| Xdebug             | `${bref:extra.xdebug-php-74}`         |
-| Yaml               | `${bref:extra.yaml-php-74}`           |
+| Name             | Serverless config (php 7.4)           |
+| :--------------- | :------------------------------------ |
+| AMQP             | `${bref:extra.amqp-php-74}`           |
+| Blackfire        | `${bref:extra.blackfire-php-74}`      |
+| Cassandra        | `${bref:extra.cassandra-php-74}`      |
+| DS               | `${bref:extra.ds-php-74}`             |
+| GD               | `${bref:extra.gd-php-74}`             |
+| GMP              | `${bref:extra.gmp-php-74}`            |
+| gRPC             | `${bref:extra.grpc-php-74}`           |
+| Igbinary         | `${bref:extra.igbinary-php-74}`       |
+| Imagick          | `${bref:extra.imagick-php-74}`        |
+| LDAP             | `${bref:extra.ldap-php-74}`           |
+| Mailparse        | `${bref:extra.mailparse-php-74}`      |
+| Memcache         | `${bref:extra.memcache-php-74}`       |
+| Memcached        | `${bref:extra.memcached-php-74}`      |
+| MongoDB          | `${bref:extra.mongodb-php-74}`        |
+| MsgPack          | `${bref:extra.msgpack-php-74}`        |
+| ODBC Snowflake   | `${bref:extra.odbc-snowflake-php-74}` |
+| Pcov             | `${bref:extra.pcov-php-74}`           |
+| PostgreSQL       | `${bref:extra.pgsql-php-74}`          |
+| Redis            | `${bref:extra.redis-php-74}`          |
+| Scrypt           | `${bref:extra.scrypt-php-74}`         |
+| Microsoft SQLSRV | `${bref:extra.sqlsrv-php-74}`         |
+| UUID             | `${bref:extra.uuid-php-74}`           |
+| Xdebug           | `${bref:extra.xdebug-php-74}`         |
+| Yaml             | `${bref:extra.yaml-php-74}`           |
 
 ### Blackfire installation
 
@@ -130,6 +130,7 @@ the `/opt` directory in the image.
 When developing locally you can build your own images with the required extensions. Example with PHP 7.4 and MongoDB Extension:
 
 docker-compose.yml
+
 ```
   php:
     build:
@@ -140,6 +141,7 @@ docker-compose.yml
 ```
 
 Dockerfile-phpFpm
+
 ```
 FROM bref/extra-mongodb-php-74 as mongodbextra
 FROM bref/php-74-fpm-dev
@@ -215,4 +217,14 @@ make layer=gd php_versions=74
 layer=blackfire php_versions=80 make
 ```
 
+## Lambda layers in details
 
+> **Notice:** this section is only useful if you want to learn more.
+
+The lambda layers follow this pattern:
+
+```
+arn:aws:lambda:<region>:403367587399:layer:<layer-name>:<layer-version>
+```
+
+See the [latest layer versions](https://raw.githubusercontent.com/brefphp/extra-php-extensions/master/layers.json).
